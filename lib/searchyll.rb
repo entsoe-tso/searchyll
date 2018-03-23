@@ -34,7 +34,7 @@ begin
     if post.data.key?("redirect_to")
       next
     end
-
+    puts post.data
     indexer = indexers[post.site]
     indexer << post.data.merge({
       # id:     post.url,
