@@ -30,7 +30,10 @@ begin
       tDate = Time.now.iso8601.to_s
     end
     # puts Date.strptime(post["last_modified_at"].to_s, '%d-%b-%y').iso8601.to_s
-    
+    if post.data["layout"] == nil
+      next  
+    end
+
     if post.data.key?("redirect_to")
       next
     end
@@ -57,6 +60,10 @@ begin
     nokogiri_doc = Nokogiri::HTML(post.output)
 
     # puts %(        indexing document #{post.url})
+
+    if post.data["layout"] == nil
+      next  
+    end
     
     tDate = post.data["date"]
 
